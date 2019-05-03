@@ -1,0 +1,6 @@
+framework module Pods_MainCode {
+  umbrella header "Pods-MainCode-umbrella.h"
+
+  export *
+  module * { export * }
+}
