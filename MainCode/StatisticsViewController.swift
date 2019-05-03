@@ -83,6 +83,12 @@ class StatisticsViewController: UIViewController, UIScrollViewDelegate {
         data.addDataSet(line1)
         data.addDataSet(line2)
         realChart.data = data
+        realChart.xAxis.drawAxisLineEnabled = false
+        realChart.xAxis.drawGridLinesEnabled = false
+        realChart.leftAxis.drawAxisLineEnabled = false
+        realChart.leftAxis.drawGridLinesEnabled = false
+        realChart.rightAxis.drawAxisLineEnabled = false
+        realChart.rightAxis.drawGridLinesEnabled = false
         
         //Monthly Chart
         let line1Monthly = LineChartDataSet(entries: line1ChartEntryMonthly, label: "Average Distance")
