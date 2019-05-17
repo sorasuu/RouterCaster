@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>557436241039-lkb6ieorb5p6jvhmmg8ipj23fhrin1v9.apps.googleusercontent.com</string>
+	<string>557436241039-nfqr6slaj84gh6uup2qahefe129meg78.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.557436241039-lkb6ieorb5p6jvhmmg8ipj23fhrin1v9</string>
+	<string>com.googleusercontent.apps.557436241039-nfqr6slaj84gh6uup2qahefe129meg78</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCMQmDN1HPhIuJtTdStHMe2Yi0fiWapew8</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.Kien.MainCode</string>
+	<string>rmit.RouteCaster.G6</string>
 	<key>PROJECT_ID</key>
 	<string>route-caster</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:557436241039:ios:2755a8fb71d7ce7c</string>
+	<string>1:557436241039:ios:1d70b696396242a2</string>
 	<key>DATABASE_URL</key>
 	<string>https://route-caster.firebaseio.com</string>
 </dict>

@@ -8,15 +8,46 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
+import GooglePlaces
+import Firebase
+import GoogleSignIn
+
+var launch = ""
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let apikey = "AIzaSyCMYfiszedRS_hcUjJUyRCx9QPsaR2zUPQ"
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+//        let lauchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+//        
+//        if lauchedBefore {
+//            launch = "Has launched before"
+//        } else {
+//            launch = "First time launch"
+//            UserDefaults.standard.set(true, forKey: "launchedBefore")
+//        }
+        
         Spark.start()
+       
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
+        GMSServices.provideAPIKey(apikey)
+        GMSPlacesClient.provideAPIKey(apikey)
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -86,6 +117,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    var orientationLock =  UIInterfaceOrientationMask.all
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return orientationLock
+    }
+    
+    struct AppUtility {
+        
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+            
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.orientationLock = orientation
+            }
+        }
+        
+        /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+            
+            self.lockOrientation(orientation)
+            
+            UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+            UINavigationController.attemptRotationToDeviceOrientation()
+        }
+        
     }
 
 }
